@@ -12,7 +12,7 @@ class MoleGame(gamelib.SimpleGame):
 	def __init__(self):
 		super(MoleGame, self).__init__('Mole', MoleGame.BROWN)
 		self.mole = Mole()
-		self.time = 100
+		self.time = 1200
 		self.score = 0
 		self.holes = (Hole((150,150)),Hole((280,150)),Hole((410,150)),
 		Hole((150,250)),Hole((280,250)),Hole((410,250)),
@@ -38,8 +38,9 @@ class MoleGame(gamelib.SimpleGame):
 	def stop(self):
 		for event in pygame.event.get():
 			if(pygame.key.get_pressed()[K_r]):
-				self.time = 300
-				
+				self.time = 1200
+				self.score = 0
+
 	def render_score(self):
 		self.score_image = font.render("Score = %d" % self.score, 0, GREY)
 
@@ -58,8 +59,9 @@ class MoleGame(gamelib.SimpleGame):
 
 	def update(self):
 		self.__handle_event()
-		self.mole.update(self.holes)
-		self.time -= 1
+		if(self.time > 0):
+			self.mole.update(self.holes)
+			self.time -= 1
 		print self.time/60
 
 	def mole_get_hit(self):
