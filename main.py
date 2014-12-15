@@ -25,7 +25,8 @@ class MoleGame(gamelib.SimpleGame):
                            (event.type == KEYDOWN and event.key == K_ESCAPE):
 				self.terminate()
 			if(event.type == pygame.MOUSEBUTTONDOWN):
-				self.hit(self.mole)
+				if(self.is_hit(self.mole)):
+					self.mole_get_hit()
 
 	def render(self, surface):
 		for hole in self.holes:
@@ -38,12 +39,16 @@ class MoleGame(gamelib.SimpleGame):
 		self.time -= 1
 		#print self.time
 
-	def hit(self, mole):
+	def mole_get_hit(self):
+		self.mole.reset_mole_t()
+
+	def is_hit(self, mole):
 		mouse_pos = pygame.mouse.get_pos()
 		mole_pos = mole.get_mole_pos()
 		if(mouse_pos[0] - mole_pos[0] <= 64 and mouse_pos[0] - mole_pos[0] >= 0) and \
 		(mouse_pos[1] - mole_pos[1] <= 64 and mouse_pos[1] - mole_pos[1] >= 0):
-			print 'hited'
+			return True
+		return False
 
 def main():
 	game = MoleGame()

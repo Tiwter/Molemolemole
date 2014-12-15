@@ -11,6 +11,9 @@ class Mole(object):
 
 	def set_mole_pos(self, pos):
 		self.pos = pos
+		
+	def reset_mole_t(self):
+		self.t = 1
 
 	def get_mole_pos(self):
 		return self.pos
