@@ -40,6 +40,9 @@ class MoleGame(gamelib.SimpleGame):
 			if(pygame.key.get_pressed()[K_r]):
 				self.time = 1200
 				self.score = 0
+			if (event.type == QUIT) or \
+                           (event.type == KEYDOWN and event.key == K_ESCAPE):
+				self.terminate()
 
 	def render_score(self):
 		self.score_image = font.render("Score = %d" % self.score, 0, GREY)
