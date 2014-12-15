@@ -18,13 +18,15 @@ class SimpleGame(object):
 		self.font = pygame.font.SysFont("monospace",20)
 
 	def __handle_events(self):
-		for event in pygame.event.get():
-			if event.type == QUIT:
+		pass
+		'''for event in pygame.event.get():
+			if (event.type == QUIT) or \
+                           (event.type == KEYDOWN and event.key == K_ESCAPE):
 				self.terminate()
-			elif event.type == KEYDOWN:
+			lif event.type == KEYDOWN:
 				self.on_key_down(event.key)
 			elif event.type == KEYUP:
-				self.on_key_up(event.key)
+				self.on_key_up(event.key)'''
 
 	def terminate(self):
 		self.is_terminated = True
@@ -38,6 +40,7 @@ class SimpleGame(object):
 			self.render(self.surface)
 			pygame.display.update()
 			self.clock.tick(self.fps)
+		print "End"
 
 	def init(self):
 		self.__game_init()
