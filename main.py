@@ -10,7 +10,7 @@ class MoleGame(gamelib.SimpleGame):
 	GREY = pygame.Color('grey')
 
 	def __init__(self):
-		super(MoleGame, self).__init__('Mole', MoleGame.BROWN)
+		super(MoleGame, self).__init__('Molemolemole', MoleGame.BROWN)
 		self.mole = Mole()
 		self.time = 1200
 		self.score = 0
